@@ -1,6 +1,6 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:task_viewer/presentation/screens/task_details.dart';
-import 'package:task_viewer/task_view_app.dart';
+import 'package:task_viewer/task_viewer_app.dart';
 
 void main() => runApp(const MyApp());
 
@@ -12,9 +12,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Task Viewer',
       debugShowCheckedModeBanner: false,
+      scrollBehavior: const MaterialScrollBehavior().copyWith(
+        dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse},
+      ),
       theme: ThemeData.dark(),
       home: const TaskViewerApp(),
-      routes: {TaskDetails.routeName: (context) => TaskDetails()},
     );
   }
 }

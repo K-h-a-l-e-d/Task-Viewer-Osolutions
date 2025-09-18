@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Flutter (linux)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "deviceId": "linux",
+            "args": [
+                "--dart-define",
+                "ANON_KEY=${env:ANON_KEY}",
+                "--dart-define",
+                "PROJECT_ID=${env:PROJECT_ID}"
+            ]
+        }
+    ]
+}

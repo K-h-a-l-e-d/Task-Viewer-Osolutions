@@ -23,6 +23,14 @@ linter:
   rules:
     # avoid_print: false  # Uncomment to disable the `avoid_print` rule
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
-
+    prefer_const_constructors: true
+    # Enable prefer_const_literals_to_create_immutables for const suggestions on literals
+    prefer_const_literals_to_create_immutables: true
+    # Enable prefer_const_declarations for const suggestions on declarations
+    prefer_const_declarations: true
+    # This one is often kept by default, but you can explicitly enable it
+    prefer_const_constructors_in_immutables: true
+    # This warns if you use `const` unnecessarily, which can be useful
+    unnecessary_const: true
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

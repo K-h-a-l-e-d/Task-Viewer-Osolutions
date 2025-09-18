@@ -4,6 +4,14 @@
 Simple Flutter Task Viewer Project which demonstrates simple CRUD operation, it Simply performs an HTTP GET request to fetch a list of tasks from an API, Displays these tasks in a ListView, on pressing on any of these tasks it navigates to more details about the task. also you can mark/unmark a task Checkbox  which toggles the status of a task whether its completed or not by sending a patch request to the API.
   
 ## Application Screenshots
+|<img width="402" height="728" alt="swappy-20250918-095859" src="https://github.com/user-attachments/assets/0b698a77-f27f-4b1b-bfc3-9f678ead425a" />|<img width="400" height="727" alt="swappy-20250918-100601" src="https://github.com/user-attachments/assets/c04f3cfb-4293-4c00-ae96-ef0d8075f290" />|<img width="400" height="731" alt="swappy-20250918-100642" src="https://github.com/user-attachments/assets/3b3f05cc-6e27-4790-b095-f4f4bcc46b58" />|<img width="400" height="729" alt="swappy-20250918-100738" src="https://github.com/user-attachments/assets/c50538ea-a35d-46b3-a850-67b60ee3d929" />|
+|-|-|-|-|
+
+## App Overview
+https://github.com/user-attachments/assets/0a7a1bcd-681b-42e7-b759-6f4dfeb83166
+
+
+
 
 ## How to Run
 
@@ -12,7 +20,7 @@ Simple Flutter Task Viewer Project which demonstrates simple CRUD operation, it 
 git clone https://github.com/K-h-a-l-e-d/Task-Viewer-Osolutions.git
 ```
 
-2. add your API Credentials in the project using '--dart-define' way as the following (NOTE that you can use other ways to securely pass your credentials). 
+2. add your API Credentials in the project using '--dart-define' way as the following (NOTE that you can use other ways to securely pass your credentials).  
 - for linux and macOS run the following code format with your Credentials in a terminal 
 ```
 export PROJECT_ID=<Your_PROJECT_ID>

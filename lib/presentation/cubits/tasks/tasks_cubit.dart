@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_viewer/core/network/api_client.dart';
+import 'package:task_viewer/models/api_error.dart';
 import 'package:task_viewer/models/task.dart';
 
 part 'tasks_state.dart';
@@ -14,18 +15,17 @@ class TasksCubit extends Cubit<TasksState> {
 
   Future<void> getTasks({limit = 10, offset, priority, categoryId, completed}) async {
     emit(TasksLoading());
-    try {
-      final tasks = await _apiClient.getTasks(
-        limit: limit,
-        offset: offset,
-        priority: priority,
-        categoryId: categoryId,
-        completed: completed,
-      );
-      emit(TasksLoaded(tasks: tasks!));
-    } catch (e) {
-      emit(TasksError(error: e.toString()));
-    }
+    final response = await _apiClient.getTasks(
+      limit: limit,
+      offset: offset,
+      priority: priority,
+      categoryId: categoryId,
+      completed: completed,
+    );
+    response.fold(
+      (apiError) => emit(TasksError(apiError: apiError)),
+      (tasks) => emit(TasksLoaded(tasks: tasks)),
+    );
   }
 
   Future<void> updateTaskCompletionStatus({
@@ -36,7 +36,7 @@ class TasksCubit extends Cubit<TasksState> {
       await _apiClient.updateTaskCompletionStatus(id, completed);
       await getTasks();
     } catch (e) {
-      emit(TasksError(error: e.toString()));
+      //emit(TasksError(error: e.toString()));
     }
   }
 }

@@ -14,7 +14,7 @@ class CategoryLoaded extends CategoryState {
 }
 
 class CategoryError extends CategoryState {
-  final String error;
+  final ApiError apiError;
 
-  CategoryError({required this.error});
+  CategoryError({required this.apiError});
 }

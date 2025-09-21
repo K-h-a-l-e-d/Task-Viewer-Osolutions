@@ -9,7 +9,7 @@ class TaskViewerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: const Color.fromARGB(255, 2, 27, 39),
+      backgroundColor: const Color.fromARGB(255, 2, 27, 39),
       appBar: AppBar(
         title: const Text('Task Viewer'),
         centerTitle: true,

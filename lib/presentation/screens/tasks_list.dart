@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_viewer/core/utils/helpers.dart';
-import 'package:task_viewer/presentation/cubits/category/category_cubit.dart';
 import 'package:task_viewer/presentation/cubits/tasks/tasks_cubit.dart';
 import 'package:task_viewer/presentation/screens/task_details.dart';
 import 'package:task_viewer/presentation/widgets/category_widget.dart';
+import 'package:task_viewer/presentation/widgets/error_text.dart';
 import 'package:task_viewer/presentation/widgets/task_tile.dart';
 
 class TasksList extends StatelessWidget {
@@ -24,27 +24,19 @@ class TasksList extends StatelessWidget {
                   itemExtent: 90,
                   itemBuilder: (context, index) {
                     final task = state.tasks[index];
-                    return BlocProvider(
-                      create: (context) =>
-                          CategoryCubit()..getCategoryById(task.categoryId),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8),
-                        child: TaskTile(
-                          taskId: task.id,
-                          title: task.title,
-                          category: const CategoryText(),
-                          priorty: task.priority,
-                          imageUrl: task.imageUrl,
-                          completed: task.completed,
-                          onTap: () => navigateTo(context, TaskDetails(task: task)),
-                        ),
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8),
+                      child: TaskTile(
+                        category: CategoryText(categoryId: task.categoryId),
+                        task: task,
+                        onTap: () => navigateTo(context, TaskDetails(task: task)),
                       ),
                     );
                   },
                 ),
               )
             : state is TasksError
-            ? Center(child: Text(state.error))
+            ? Center(child: ErrorText(apiError: state.apiError))
             : const Center(child: Text('Unknown State!'));
       },
     );

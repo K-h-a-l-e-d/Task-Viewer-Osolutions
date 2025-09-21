@@ -7,23 +7,19 @@ class PriorityBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (priority != null) {
-      return Container(
-        width: MediaQuery.of(context).size.width / 5,
-        decoration: BoxDecoration(
-          color: _getPriorityColor(priority!),
-          borderRadius: BorderRadius.circular(15),
+    return Container(
+      width: MediaQuery.of(context).size.width / 5,
+      decoration: BoxDecoration(
+        color: _getPriorityColor(priority!),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Center(
+        child: Text(
+          priority!,
+          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        child: Center(
-          child: Text(
-            priority!,
-            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-        ),
-      );
-    } else {
-      return const Text('');
-    }
+      ),
+    );
   }
 }
 

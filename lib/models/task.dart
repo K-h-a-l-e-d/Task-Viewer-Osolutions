@@ -1,4 +1,6 @@
-class Task {
+import 'dart:math';
+
+class TaskModel {
   final int id;
   final String title;
   final String? description;
@@ -10,7 +12,7 @@ class Task {
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  Task({
+  TaskModel({
     required this.id,
     required this.title,
     required this.description,
@@ -23,7 +25,7 @@ class Task {
     required this.updatedAt,
   });
 
-  factory Task.fromJson(Map<String, dynamic> json) => Task(
+  factory TaskModel.fromJson(Map<String, dynamic> json) => TaskModel(
     id: json["id"],
     title: json["title"],
     description: json["description"] ?? '',
@@ -31,8 +33,18 @@ class Task {
     categoryId: json["category_id"],
     dueDate: json["due_date"] != null ? DateTime.parse(json["due_date"]) : null,
     completed: json["completed"],
-    imageUrl: json["image_url"],
+    //handling image urls that are invalid by just replacing it with a random placeholder similar to the one
+    //given in API Docs
+    imageUrl: _getValidImage(json["image_url"]),
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),
   );
+}
+
+_getValidImage(String imgUrl) {
+  //note that its not generic as it only checks if the url contains "https://picsum.photo" which is the one
+  //mentioned in a API Docs
+  return !imgUrl.contains('https://picsum.photo')
+      ? 'https://picsum.photos/400/300?random=${Random().nextInt(4000)}'
+      : imgUrl;
 }

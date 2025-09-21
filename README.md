@@ -42,3 +42,4 @@ flutter run --dart-define PROJECT_ID=$PROJECT --dart-define ANON_KEY=$ANON_KEY
 ## Tech Stack
 - Dio: for CRUD operations. used it for HTTP GET and PATCH in the project. while http package is a powerful option, i've chosen dio for this project as it handles json decode operation in GET requests out of the box.
 - BLoC/Cubits: for state management, while Riverpod/Provider is a Strong Choice for state management as well, i've chosen BLoC as a personal preference and as i'm more familiar with its even/state-driven architecture.   
+- Dartz: Dartz Package's Either Datatype is used to handle response fetched from API Whether that response was a successful query or an error. and i've chosen this package as it handles the null safety overhead making the code cleaner.

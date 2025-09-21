@@ -1,3 +1,7 @@
+//These Credentials will be provided using --dart-define to be passed
+//from enviroment variables so they won't be exposed in github repo and i used dart define
+//since there won't be a binary release in repo
+
 // ignore: constant_identifier_names
 const PROJECT_ID = String.fromEnvironment('PROJECT_ID');
 // ignore: constant_identifier_names
